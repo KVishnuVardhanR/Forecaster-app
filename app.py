@@ -6,7 +6,7 @@ import tensorflow
 from tensorflow.keras.models import load_model
 
 # Load the trained model
-model = load_model('Downloads/receipt_forecast_model.h5')
+model = load_model('receipt_forecast_model.h5')
 
 month_dict = {
     "January" : 1, "February":2 , "March":3 , "April":4, "May":5, "June":6, 
@@ -25,7 +25,7 @@ st.write("""
 """)
 
 # Load the data
-data_daily = pd.read_csv("Downloads/data_daily.csv")
+data_daily = pd.read_csv("data_daily.csv")
 data_daily['# Date'] = pd.to_datetime(data_daily['# Date'])
 data_monthly = data_daily.groupby(data_daily['# Date'].dt.to_period("M"))['Receipt_Count'].sum().reset_index()
 data_monthly.columns = ['Month', 'Receipt_Count']
